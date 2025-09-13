@@ -1,1 +1,647 @@
-/* Add your CSS here */
+/* Import Raleway font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Reset body margins and padding to remove white borders */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", Arial, sans-serif; /* Apply Raleway to all text */
+}
+
+/* Navigation Bar Styles */
+.navbar {
+  background-color: white; /* White background for navbar */
+  display: flex;
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: center;
+  padding: 0; /* Remove padding to allow blue square to extend fully */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Left side of navigation */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Reduced space between logo container and menu */
+}
+
+/* Logo link container */
+.nav-logo-link {
+  display: block;
+  background-color: #0071c5; /* Blue background for logo area */
+  padding: 20px; /* Padding around logo to create square */
+  margin: 0; /* No margin to touch edges */
+  text-decoration: none; /* Remove link underline */
+  transition: background-color 0.2s; /* Smooth hover transition */
+}
+
+.nav-logo-link:hover {
+  background-color: #005fa3; /* Darker blue on hover */
+}
+
+/* Blue square container for logo */
+.nav-logo {
+  width: 60px; /* Logo size */
+  height: auto;
+  display: block; /* Remove any inline spacing */
+}
+
+/* Navigation menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px; /* Add padding to menu for spacing */
+  gap: 25px; /* Space between menu items */
+}
+
+.nav-menu a {
+  color: #0071c5; /* Intel blue color to match logo background */
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(0,113,197,0.1); /* Light blue hover effect */
+}
+
+/* Right side of navigation */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between right elements */
+  padding: 0 20px; /* Add padding to right section */
+}
+
+/* Search bar */
+.search-bar {
+  padding: 6px 12px;
+  border: 1px solid #ddd; /* Light border for white background */
+  border-radius: 20px;
+  width: 200px;
+  font-size: 14px;
+}
+
+/* Navigation icons */
+.nav-icon {
+  background: none;
+  border: none;
+  color: #333; /* Dark color for white background */
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-icon:hover {
+  background-color: rgba(0,113,197,0.1); /* Light blue hover */
+}
+
+/* Timeline horizontal scroll container */
+.timeline-scroll {
+  display: flex; /* Arrange cards in a row */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 25px; /* Space between cards - slightly more space */
+  padding: 20px 0 20px 15px; /* Top/bottom and left padding */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
+  scroll-behavior: smooth; /* Smooth scrolling animation */
+}
+
+/* Stack cards vertically on smaller screens */
+@media (max-width: 768px) {
+  .timeline-scroll {
+    flex-direction: column; /* Stack cards vertically */
+    overflow-x: visible; /* Remove horizontal scroll */
+    align-items: center; /* Center cards */
+    padding: 20px 15px; /* Adjust padding for vertical layout */
+  }
+  
+  /* Mobile navigation bar with Intel blue background */
+  .navbar {
+    background-color: #0071c5; /* Intel blue background */
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Extend to full viewport width */
+    margin-right: calc(-50vw + 50%);
+    box-sizing: border-box;
+    padding: 15px 0; /* Add vertical padding for more height */
+  }
+  
+  /* Hide Intel logo on mobile */
+  .nav-logo-link {
+    display: none;
+  }
+  
+  /* Left side expands to fill space where logo was */
+  .nav-left {
+    flex: 1;
+    justify-content: flex-start; /* Align menu to left */
+    gap: 15px; /* Keep original spacing */
+  }
+  
+  /* Navigation menu keeps original spacing with white text */
+  .nav-menu {
+    padding: 0 20px; /* Keep original padding */
+    gap: 25px; /* Keep original space between menu items */
+  }
+  
+  /* Make menu links white on blue background with more padding */
+  .nav-menu a {
+    color: white; /* White text on blue background */
+    padding: 10px 12px; /* Increase vertical padding */
+  }
+  
+  .nav-menu a:hover {
+    background-color: rgba(255,255,255,0.1); /* Light white hover effect */
+  }
+  
+  /* Hide search bar and icons from navigation on small screens */
+  .nav-right .search-bar {
+    display: none;
+  }
+  
+  .nav-right .nav-icon {
+    display: none;
+  }
+  
+  /* Show mobile search bar and icons in hero section */
+  .mobile-search-bar {
+    display: block !important;
+    margin: 20px auto 0;
+    max-width: 90%;
+  }
+  
+  /* Mobile search section with icons */
+  .mobile-search-section {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto 0;
+    max-width: 400px;
+    padding: 0 15px;
+  }
+  
+  /* Fix hero section for mobile */
+  .hero {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Extend to full viewport width */
+    margin-right: calc(-50vw + 50%);
+    padding: 30px 0; /* Reduce top/bottom padding */
+    box-sizing: border-box;
+  }
+  
+  /* Adjust hero content for mobile */
+  .hero-content {
+    padding: 20px 15px; /* Reduce padding */
+    max-width: 100%; /* Full width */
+    margin: 0;
+  }
+  
+  /* Make header responsive */
+  .hero-content h1 {
+    font-size: 2.5em; /* Smaller font size for mobile */
+    margin-bottom: 20px;
+    line-height: 1.2; /* Better line height for mobile */
+  }
+  
+  /* Adjust paragraph margins for mobile */
+  .hero-content p {
+    margin-left: 20px; /* Reduce side margins */
+    margin-right: 20px;
+    font-size: 1em; /* Slightly larger text for mobile */
+    margin-bottom: 15px; /* Add space before search bar */
+  }
+}
+
+/* Timeline card box styling */
+.timeline-card {
+  min-width: 280px; /* Minimum width for each card - bigger size */
+  max-width: 300px; /* Maximum width for each card */
+  height: 350px; /* Fixed height for all cards - taller */
+  flex: 0 0 auto; /* Prevent cards from shrinking */
+  perspective: 1000px; /* Creates 3D effect for flip */
+  position: relative;
+  scroll-snap-align: start; /* Snap to the start of each card */
+}
+
+/* Card inner container for flip effect */
+.timeline-card .card-front,
+.timeline-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5; /* Light background for cards */
+  border: 2px solid #0071c5; /* Blue border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Soft shadow */
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.6s; /* Smooth flip animation */
+  backface-visibility: hidden; /* Hide back when flipped */
+  font-family: 'Noto Sans', Arial, sans-serif; /* Apply Noto Sans font to cards */
+}
+
+/* Back of card is initially hidden (flipped) */
+.timeline-card .card-back {
+  transform: rotateY(180deg);
+}
+
+/* Card hover effect - flip the card */
+.timeline-card:hover .card-front {
+  transform: rotateY(-180deg);
+}
+
+.timeline-card:hover .card-back {
+  transform: rotateY(0deg);
+}
+
+/* Card image styling */
+.card-img {
+  width: 100%;
+  height: 150px; /* Taller image to match bigger cards */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* Center the timeline instruction text */
+.timeline-instruction {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+  color: #666;
+  font-family: "Raleway", Arial, sans-serif; /* Use Raleway font */
+}
+
+/* Make timeline section responsive on small screens */
+@media (max-width: 768px) {
+  .timeline-card {
+    min-width: 300px; /* Wider cards for vertical stacking */
+    max-width: 350px;
+    height: 320px; /* Adjust height for mobile */
+    flex: none; /* Remove flex shrinking for vertical layout */
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline-card {
+    min-width: 280px;
+    max-width: 320px;
+    height: 280px;
+  }
+  .timeline-card .card-front,
+  .timeline-card .card-back {
+    padding: 12px;
+  }
+  .card-img {
+    height: 100px;
+  }
+  
+  /* Hide navigation bar completely on very small screens */
+  .navbar {
+    display: none !important;
+  }
+  
+  /* Show hamburger menu on very small screens */
+  .hamburger-menu {
+    display: flex !important;
+  }
+  
+  /* Show mobile menu overlay on very small screens */
+  .mobile-menu-overlay {
+    display: block;
+  }
+  
+  /* Hero section extends to top without navigation */
+  .hero {
+    padding-top: 60px; /* Add top padding to account for hamburger menu */
+  }
+  
+  /* Extra small screens - further reduce header size */
+  .hero-content h1 {
+    font-size: 2em; /* Even smaller for very small screens */
+    margin-bottom: 15px;
+  }
+  
+  /* Adjust paragraph for very small screens */
+  .hero-content p {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 0.95em;
+  }
+  
+  /* Adjust mobile search section for very small screens */
+  .mobile-search-section {
+    flex-direction: column;
+    gap: 15px;
+    max-width: 320px;
+  }
+  
+  .mobile-search-bar {
+    max-width: 90% !important;
+    margin: 15px auto 0 !important;
+  }
+  
+  /* Icons row for very small screens */
+  .mobile-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-left: 0; /* Remove left margin when stacked vertically */
+  }
+}
+
+/* iPhone SE specific dimensions (375x667) */
+@media (max-width: 375px) and (max-height: 667px) {
+  /* Adjust hero content for iPhone SE */
+  .hero-content h1 {
+    font-size: 3em; /* Set to 3em as requested */
+    margin-bottom: 10px;
+    line-height: 1.1; /* Tighter line height */
+    padding: 0 5px; /* Add small side padding */
+  }
+  
+  /* Adjust paragraph for iPhone SE - wider text layout */
+  .hero-content p {
+    margin-left: 30px; /* Increase left margin for better text flow */
+    margin-right: 30px; /* Increase right margin for better text flow */
+    font-size: 0.85em; /* Smaller text */
+    line-height: 1.4; /* Slightly more line height for readability */
+    margin-bottom: 10px;
+  }
+  
+  /* Reduce hero padding for iPhone SE */
+  .hero {
+    padding-top: 50px; /* Less top padding */
+    padding-bottom: 20px; /* Less bottom padding */
+  }
+  
+  /* Adjust hero content padding */
+  .hero-content {
+    padding: 15px 10px; /* Reduce padding */
+    max-width: 100%; /* Use full width */
+  }
+  
+  /* Make mobile search section more compact */
+  .mobile-search-section {
+    margin: 15px auto 0; /* Reduce top margin */
+    max-width: 340px; /* Slightly wider for iPhone SE */
+    padding: 0 10px;
+  }
+  
+  /* Adjust search bar for iPhone SE */
+  .mobile-search-bar {
+    max-width: 85% !important;
+    font-size: 14px; /* Smaller text */
+    padding: 8px 12px; /* Reduce padding */
+    height: 36px; /* Smaller height */
+  }
+  
+  /* Adjust mobile icons for iPhone SE */
+  .mobile-icons .nav-icon {
+    font-size: 16px; /* Smaller icons */
+    height: 36px; /* Match search bar height */
+    padding: 8px 4px;
+  }
+  
+  /* Adjust timeline cards for iPhone SE */
+  .timeline-card {
+    min-width: 260px;
+    max-width: 300px;
+    height: 260px;
+  }
+  
+  /* Hamburger menu adjustments for iPhone SE */
+  .hamburger-menu {
+    top: 10px;
+    left: 10px;
+    padding: 8px;
+  }
+  
+  .hamburger-line {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+.hero {
+  /* Lighter gray ombre (gradient) background with thinner very subtle darker stripes */
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 15px,
+      rgba(0,0,0,0.03) 15px,
+      rgba(0,0,0,0.03) 17px
+    ),
+    linear-gradient(135deg, #f0f0f0 0%, #f8f8f8 50%, #e8e8e8 100%);
+  width: 100%;
+  padding: 40px 0 30px 0; /* Top and bottom padding */
+  box-sizing: border-box;
+}
+
+/* Center all content inside the hero */
+.hero-content {
+  text-align: center;
+  color: #333; /* Dark text for contrast on gray background */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* Old intel logo styles - no longer needed as logo is in navigation */
+
+/* Main heading styling */
+.hero-content h1 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 4em;
+  font-family: "Raleway", sans-serif; /* Elegant Raleway font */
+  font-weight: normal; /* Remove bold styling */
+}
+
+/* Subheading/description styling */
+.hero-content p {
+  margin-top: 0;
+  font-size: .9em;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  line-height: 1.5; /* Increase spacing between lines */
+  margin-left: 100px; /* Add left margin to make text narrower */
+  margin-right: 100px; /* Add right margin to make text narrower */
+}
+
+/* Mobile search section - hidden by default */
+.mobile-search-section {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* Remove gap to control spacing manually */
+  margin: 25px auto 0;
+  max-width: 400px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* Mobile search bar */
+.mobile-search-bar {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  flex: 1;
+  max-width: 280px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: white;
+  height: 40px; /* Set consistent height */
+}
+
+/* Mobile icons container */
+.mobile-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-left: 15px; /* Align with search bar spacing */
+  height: 40px; /* Match search bar height */
+}
+
+/* Mobile icons - simple icons without background */
+.mobile-icons .nav-icon {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 18px; /* Slightly smaller to better match search bar */
+  padding: 10px 4px; /* Add vertical padding to match search bar height */
+  border-radius: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  min-width: 24px; /* Ensure consistent icon width */
+  text-align: center;
+  height: 40px; /* Match search bar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-icons .nav-icon:hover {
+  opacity: 0.7; /* Simple hover effect */
+}
+
+/* Hamburger Menu Button - hidden by default */
+.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  flex-direction: column;
+  gap: 4px;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+}
+
+/* Mobile Menu Container */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 60px 0 20px 0;
+  overflow-y: auto;
+}
+
+.mobile-menu-overlay.active .mobile-menu {
+  left: 0;
+}
+
+/* Close Menu Button */
+.close-menu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-menu:hover {
+  color: #0071c5;
+}
+
+/* Mobile Navigation Links */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 15px 30px;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.mobile-nav-link:hover {
+  background-color: #f5f5f5;
+  color: #0071c5;
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
