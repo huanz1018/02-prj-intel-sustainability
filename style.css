@@ -205,7 +205,7 @@ body {
   
   /* Make header responsive */
   .hero-content h1 {
-    font-size: 2.5em; /* Smaller font size for mobile */
+    font-size: 3em; /* 3em font size for mobile to prevent overflow */
     margin-bottom: 20px;
     line-height: 1.2; /* Better line height for mobile */
   }
@@ -362,7 +362,7 @@ body {
 @media (max-width: 375px) and (max-height: 667px) {
   /* Adjust hero content for iPhone SE */
   .hero-content h1 {
-    font-size: 3em; /* Set to 3em as requested */
+    font-size: 1.4em; /* Even smaller font size for iPhone SE */
     margin-bottom: 10px;
     line-height: 1.1; /* Tighter line height */
     padding: 0 5px; /* Add small side padding */
@@ -377,10 +377,14 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Reduce hero padding for iPhone SE */
+  /* Ensure hero extends full width on iPhone SE */
   .hero {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Extend to full viewport width */
+    margin-right: calc(-50vw + 50%);
     padding-top: 50px; /* Less top padding */
     padding-bottom: 20px; /* Less bottom padding */
+    box-sizing: border-box;
   }
   
   /* Adjust hero content padding */
@@ -442,7 +446,9 @@ body {
       rgba(0,0,0,0.03) 17px
     ),
     linear-gradient(135deg, #f0f0f0 0%, #f8f8f8 50%, #e8e8e8 100%);
-  width: 100%;
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Extend to full viewport width */
+  margin-right: calc(-50vw + 50%);
   padding: 40px 0 30px 0; /* Top and bottom padding */
   box-sizing: border-box;
 }
